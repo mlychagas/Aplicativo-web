@@ -1,0 +1,57 @@
+<% produto = produto || {}; %>
+<div class="row page-titles mx-0">
+    <div class="col-sm-6 p-md-0">
+        <div class="welcome-text">
+            <h4>
+                <%= titulo %>
+            </h4>
+            <p class="mb-0">&raquo; Adicionar novo produto</p>
+        </div>
+    </div>
+    <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Inicial</a></li>
+            <li class="breadcrumb-item active"><a href="/produtos">Consultar Produtos</a></li>
+            <li class="breadcrumb-item active"><a href="javascript:void(0)">Novo Produto</a></li>
+        </ol>
+    </div>
+</div>
+<!-- row -->
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <form action="/produtos/<%= produto ? produto.id + '/editar' : 'criar' %>" method="POST">
+                    <div class="form-group mb-3">
+                        <label for="nome" class="form-label">Nome do produto</label>
+                        <input type="text" class="form-control" id="nome" name="nome"
+                         placeholder="Informe o produto" value="<%= produto ? produto.nome : '' %>">
+                         </div>
+                         <div class="form-group mb-3">
+                        <label for="descricao" class="form-label">Descrição do produto</label>
+                        <textarea class="form-control" id="descricao" name="descricao" rows="4"
+                            placeholder="Informe a descrição do produto"><%= produto ? produto.descricao : '' %></textarea>
+                         </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6 mb-3">
+                                <label for="preco" class="form-label">Preço do produto</label>
+                                <input type="text" class="form-control" id="preco" name="preco"
+                                    placeholder="0,00" min="0" value="<%= produto ? produto.preco.replace('.', ',') : '0,00' %>">
+                            </div>
+                            <div class="form-group col-md-6 mb-3">
+                                <label for="quantidade" class="form-label">Quantidade do produto</label>
+                                <input type="number" class="form-control" id="quantidade" name="quantidade"
+                                    placeholder="0" min="0" value="<%= produto ? produto.quantidade : 0 %>">
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary mr-2">Salvar</button>
+                                <a href="/produtos" class="btn btn-warning">Cancelar</a>
+                            </div>
+                        </div>
+                </form> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,60 @@
+<% produto = locals.produto || {}; %>
+<div class="row page-titles mx-0">
+    <div class="col-sm-6 p-md-0">
+        <div class="welcome-text">
+            <h4>
+                <%= locals.titulo %>
+            </h4>
+            <p class="mb-0">&raquo; <%= locals.subtitulo %></p>
+        </div>
+    </div>
+    <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Inicial</a></li>
+            <li class="breadcrumb-item active"><a href="/produtos">Consultar Produtos</a></li>
+            <li class="breadcrumb-item active"><a href="javascript:void(0)">Remover Produto</a></li>
+        </ol>
+    </div>
+</div>
+<!-- row -->
+
+<div class="row">
+    <div class="col-lg-8 offset-lg-2">
+        <div class="card border-danger">
+            <div class="card-herader bg-danger">
+                <h4 class="card-title text-white mb-0">Remoção de produto</h4>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-warning">
+                    Está ação é irreversível. 
+                    Tem certeza que deseja remover o produto 
+                </div>
+                <p class="mb-4"> Tem certeza que deseja continuar?</p>
+                <div class="table-responsive mb-4">
+                    <table class="table table-bordered mb-0">
+                        <tbody>
+                        <tr>
+                            <th>Nome</th>
+                            <td><%= produto.nome %></td>
+
+                        </tr>
+                        <tr>
+                            <th>Descrição</th>
+                            <td><%= produto.descricao %></td>
+                        </tr>
+                        <tr>
+                            <th>Preço</th>
+                            <td><%= currencyFormat(produto.preco) %></td>
+                        </tr>
+                        
+                    </tbody>
+                    </table>  
+                </div>
+                <form action="/produtos/<%= produto.id %>/excluir" method="post">
+                    <button type="submit" class="btn btn-danger mr-2">Remover Produto</button>
+                    <a href="/produtos" class="btn btn-warning">Cancelar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
